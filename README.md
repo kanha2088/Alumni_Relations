@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Alumni Relations Student Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
 
-In the project directory, you can run:
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project is a MERN stack application designed specifically for a college's alumni relations and student interaction. It allows alumni or seniors to guide juniors for placements and future careers. Users can post and interact with posts, including commenting and liking. It provides comprehensive CRUD operations for managing user profiles and posts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **User Authentication**: Secure registration and login with proper password hashing and matching.
+- **Profile Management**: Users can create, edit, and delete their profiles.
+- **Posts**: Users can create, edit, and delete posts. All posts are fetched and displayed on the dashboard.
+- **Comments and Likes**: Users can comment on and like posts.
+- **Alumni Guidance**: Alumni can guide juniors on placements and career opportunities through posts and interactions.
+- **Dashboard**: A central dashboard to view all posts and interactions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- **Frontend**: React.js
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**:bcrypt for password hashing 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Register and Login**: Users can register with their email and password. Upon successful registration, users can log in to access the application.
+2. **Profile Management**: Users can set up their profile with personal information, which can be edited or deleted later.
+3. **Posting**: Users can create new posts, edit or delete their posts.
+4. **Interaction**: Users can comment on and like posts to interact with others.
+5. **Dashboard**: View all posts and interactions in a centralized dashboard.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+To run this project locally, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    git clone https://github.com/your-username/alumni-relations-student-website.git
+    cd alumni-relations-student-website
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Install dependencies** for both frontend and backend:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    # For backend
+    cd backend
+    npm install
 
-## Learn More
+    # For frontend
+    cd ../frontend
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Set up environment variables**:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Create a `.env` file in the `backend` directory with the following content:
 
-### Code Splitting
+    ```env
+    MONGO_URI=your_mongo_database_uri
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```
 
-### Analyzing the Bundle Size
+4. **Run the application**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```bash
+    # For backend
+    cd backend
+    npm start
 
-### Making a Progressive Web App
+    # For frontend
+    cd ../frontend
+    npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    The backend will be running on `http://localhost:5000` and the frontend on `http://localhost:3000`.
 
-### Advanced Configuration
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Authentication
 
-### Deployment
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login a user
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### User Profile
 
-### `npm run build` fails to minify
+- `GET /api/users/:id` - Get user profile by ID
+- `PUT /api/users/:id` - Update user profile
+- `DELETE /api/users/:id` - Delete user profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Posts
+
+- `GET /api/posts` - Get all posts
+- `POST /api/posts` - Create a new post
+- `GET /api/posts/:id` - Get post by ID
+- `PUT /api/posts/:id` - Update post by ID
+- `DELETE /api/posts/:id` - Delete post by ID
+
+### Comments
+
+- `POST /api/posts/:id/comments` - Add a comment to a post
+- `DELETE /api/posts/:postId/comments/:commentId` - Delete a comment
+
+### Likes
+
+- `POST /api/posts/:id/likes` - Like a post
+- `DELETE /api/posts/:id/likes` - Unlike a post
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to update tests as appropriate.
+
+
