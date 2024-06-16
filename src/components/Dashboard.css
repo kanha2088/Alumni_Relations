@@ -1,0 +1,93 @@
+/* Dashboard.css */
+
+  
+  .socio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 80vw;
+  }
+  
+  .socio-header {
+    width: 90%;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .socio-header h1 {
+    margin: 0;
+    color: #0073b1;
+  }
+  
+  .socio-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .socio-sidebar {
+    width: 25%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  
+  .socio-main-content {
+    width: 75%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .socio-main-content img {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .socio-link-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #0073b1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .socio-link-button:hover {
+    background-color: #005f8c;
+  }
+  
+  .socio-button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .socio-button:hover {
+    background-color: #005f8c;
+  }
+  
+  .socio-profile-info {
+    margin-bottom: 20px;
+  }
+  
+  .socio-profile-info p {
+    margin: 5px 0;
+  }
+  

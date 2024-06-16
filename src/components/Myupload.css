@@ -1,0 +1,58 @@
+/* UploadForm.css */
+.socio-upload-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .socio-upload-container h2 {
+    text-align: center;
+    color: #0073b1;
+  }
+  
+  .socio-upload-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .socio-upload-form div {
+    margin-bottom: 15px;
+  }
+  
+  .socio-upload-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .socio-upload-form textarea,
+  .socio-upload-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .socio-upload-form textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  .socio-upload-form button {
+    background-color: #0073b1;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .socio-upload-form button:hover {
+    background-color: #005f8c;
+  }
+  

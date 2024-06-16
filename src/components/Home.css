@@ -1,0 +1,75 @@
+
+  
+  .Home {
+    text-align: center;
+    background: url('../Images/pexels-pixabay-clg.jpg') no-repeat center center fixed;
+    background-size: cover;
+   
+   
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  
+  .central-section {
+    margin-bottom: 40px;
+    
+    background: rgba(62, 57, 57, 0.7);
+  }
+  
+  .college-name {
+    margin-bottom: 20px;
+    font-size: 48px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .college-description,
+  .signup-description {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .auth-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .auth-box {
+   
+    background: rgba(64, 44, 44, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    height: 50vh;
+    color: rgb(255, 242, 0);
+    text-align: left;
+  }
+  
+  .auth-title {
+    margin-bottom: 20px;
+    font-size: 35px;
+  }
+  
+  .auth-description {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 25px;
+  }
+  
+  .auth-button {
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 13px 30px;
+    background: #cb3c23;
+    border-radius: 5px;
+   
+  }
+  
+  .auth-button:hover {
+    background: #f10909;
+  }
+  

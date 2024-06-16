@@ -1,0 +1,49 @@
+/* Allpost.css */
+.socio-allpost-container {
+  
+    padding: 20px;
+   
+    margin-top: 150px;
+    width: 100%;
+  
+    font-family: Arial, sans-serif;
+  }
+  
+  .socio-allpost-container h1 {
+    text-align: center;
+    color: #0073b1;
+  }
+  
+  .socio-upload-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .socio-upload-list li {
+    background-color: #f3f2ef;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .socio-upload-list p {
+    margin: 10px 0;
+  }
+  
+  .socio-upload-list img {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .socio-upload-list a {
+    text-decoration: none;
+    color: #0073b1;
+  }
+  
+  .socio-upload-list a:hover {
+    text-decoration: underline;
+  }
+  
