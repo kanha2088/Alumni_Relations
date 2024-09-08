@@ -1,6 +1,6 @@
 
 const mongoose=require("mongoose")
-
+const jwt=require('jsonwebtoken');
 const rolesignupSchema= new mongoose.Schema({
            role:{
                 type:String,
@@ -15,9 +15,11 @@ const rolesignupSchema= new mongoose.Schema({
                 type:String,
                
                
-            },
-           
+            }
             
+           
+                    
 })
+                    
 module.exports=mongoose.model("Rolesignup",rolesignupSchema);
 

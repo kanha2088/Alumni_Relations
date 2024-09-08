@@ -16,10 +16,11 @@ const uploadSchema= new mongoose.Schema({
         type: String,
         required: true,
     },
-    profileid: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Profile' 
-        },
+    name:
+    {
+        type: String,
+        required: true,
+    },
     createdAt:{
         type:Date,
         required:true,

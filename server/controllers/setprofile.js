@@ -1,48 +1,82 @@
-const Profile=require("../models/Profile")
+const jwt = require('jsonwebtoken');
+const Profile = require('../models/Profile');
+const uploadpost=require('../models/upload');
 
-exports.setprofile=async(req,res)=>{
+exports.setprofile = async (req, res) => {
+    try {
 
-try{
-    console.log("proflie called")
-    const {name,branch,year,rollNo,email}=req.body;
+      console.log('set profile called');
+      const { name, branch, year, storedtoken, email } = req.body;
+      console.log(storedtoken)
+      const decoded = jwt.verify(storedtoken, process.env.SECRET_KEY);
+      console.log(decoded,"decoded is")
+      const rollNo=decoded.rollNo;
 
-    const image = req.file.filename;
-    console.log({name,branch,year})
-    console.log(req.file.filename)
-    const newsetImage = await Profile.create({
+      const setimage = req.file.filename;
+      console.log("rollNo is ",rollNo)
+      console.log("image is ",setimage);
+      const image=setimage
+      const newProfile = await Profile.create({
         branch,
         image,
         name,
         year,
-        rollNo,email
-    });
-    res.status(201).json(newsetImage);
-
-     
-
-}
-catch(error){
-    console.log(error)
-   
-}
-
-
-
-
-}
+        rollNo,
+        email,
+      });
+      
+      // console.log("finish")
+    //  console.log(newProfile)
+      
+      res.status(201).json(newProfile);
+    } catch (error) {
+      console.log(error)
+      res.status(400).json({ message:"error ho gya",error:error });
+    }
+  };
 exports.getprofile=async(req,res)=>{
 try{
-    console.log("profile called")
-    const {rollNo}=req.body;
-    console.log("roll",rollNo)
-    const uploads = await Profile.find({rollNo})
-    console.log("uplaods is",uploads)        
-    res.status(200).json(uploads);
+    console.log("get profile called")
+    const {token}=req.body;
+
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    const rollNo=decoded.rollNo;
+    console.log(rollNo)
+    const uploads = await Profile.findOne({rollNo}).populate('posts');
+    if(!uploads){
+      return res.json({ message: "Enter details" });
+    }
+    //console.log("uplaods is",uploads)   
+    uploads.posts='posts';
+    uploads.messages='messages';
+
+    res.status(200).json({message:"suceess",uploads});
 }
 catch(err){
-    res.status(500).json({ error: err.message });
+    res.status(400).json({ message:"error"});
 }
 }
+exports.getotherprofile=async(req,res)=>{
+  try{
+      console.log("get otherprofile called")
+      const {rollNo}=req.body;
+  
+   
+      console.log(rollNo)
+      const uploads = await Profile.findOne({rollNo}).populate('posts');
+      if(!uploads){
+        return res.json({ message: "Enter details" });
+      }
+      console.log("uplaods is",uploads)   
+      
+      uploads.messages='messages';
+  
+      res.status(200).json({message:"suceess",uploads});
+  }
+  catch(err){
+      res.status(400).json({ message:"error"});
+  }
+  }
 exports.editprofile = async (req, res) => {
     const profile = req.body; // Assuming these are the fields you want to update
   
@@ -65,6 +99,6 @@ exports.editprofile = async (req, res) => {
       res.status(200).json(updatedprofile);
     } catch (err) {
       console.error('Error updating profile:', err);
-      res.status(500).json({ error: 'Server error' });
+      res.status(500).json({ message: 'Server error' });
     }
   };

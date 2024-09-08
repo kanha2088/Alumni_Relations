@@ -1,0 +1,126 @@
+/* Base styles */
+.signupcontainer {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffffff, #000000); 
+    
+  }
+
+.signup-page {
+    display: flex;
+    position: relative;
+    
+    width: 70vw;
+    height: 70vh;
+    flex-direction: row;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   /* Gradient background */
+  }
+  
+ 
+  
+  
+  .signup-left {
+    flex: 1;
+    background: url('../Images/pexels-keira-burton-6147276.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  
+  .signup-left h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .signup-left p {
+    position: relative;
+    top: 15px;
+    font-size: 1.9rem;
+    color: #ffffff;
+    left: 10px;
+  }
+  
+  .signup-right {
+    flex: 1;
+    background: #ede8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+  .signup-right h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #333333;
+  }
+  
+  .signup-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555555;
+  }
+  
+  .signup-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+.select-opt{
+   padding: 5px 10px;
+  }
+  .signup-form button{
+    width: 50%;
+  }
+  
+  .signup-form button:hover {
+    background-color: #45a049;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-link {
+    padding-top: 10px;
+    color: #4caf50;
+  }
+  .home{
+    color: black;
+    position: relative;
+    text-decoration: none;
+    left: 45%;
+  }

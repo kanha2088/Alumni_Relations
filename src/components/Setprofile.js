@@ -1,126 +1,118 @@
 // src/ProfileSetup.js
-import React, { useState,useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RollNoContext } from './RollNoContext'; 
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import './Setprofile.css';  // Import the CSS file
 
-
-const Setprofile = ({rollNo}) => {
-  const [name, setName] = useState('');
-  const [year, setYear] = useState('');
-  const [branch, setBranch] = useState('');
+const Setprofile = () => {
+  const token = localStorage.getItem("token");
+  const [storedtoken, setToken] = useState(token || "");
+  console.log(token,"token mil gaya")
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [year, setYear] = useState("");
+  const [branch, setBranch] = useState("");
   const [setimage, setImage] = useState(null);
-  const [title, settitle] = useState("");
-  const [email, setemail] = useState("");
-const navigate=useNavigate();
+  const [title, setTitle] = useState("");
+  const [email, setEmail] = useState("");
+  
+ 
 
-console.log(rollNo)
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
-    // console.log({ name, year, branch, setimage });
+    console.log(name,setimage,branch,email)
     const formData = new FormData();
-    formData.append('name', name); // Append rollNo to formData
-    formData.append('year', year);
-    formData.append('setimage', setimage);
-    formData.append('branch', branch);
-    formData.append('rollNo', rollNo);
-    formData.append('email', email);
-    try {
-        const response = await axios.post(`http://localhost:3600/api/setprofile`,formData)
-        .then(result=>{
-           console.log(result);
-          
-          
-        })
-        .then(settitle("Refresh the page again!!! Thank You"))
-        
-        
-          } catch (error) {
-       
+    formData.append("name", name);
+    formData.append("year", year);
+    formData.append("branch", branch);
+    formData.append("setimage", setimage);
+    formData.append("email", email);
+    formData.append("storedtoken", storedtoken);
      
-        console.log(error)
-        alert("fail")
-        
-      }
+    try {
+      const response = await axios.post(`http://localhost:3600/api/setprofile`,  formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+      alert("Successfully created Profile");
+      navigate('/signin');
+    } catch (error) {
+      console.log(error);
+      alert("Failed to create profile");
+    }
   };
 
   return (
 
 
+    <div className="setcontainer">
 
-
-    <div>
-
-
-    <h2>{
-
-
-
-      title?(title):(<div>
-        <h2>Profile Setup</h2>
-
-
-
-<form onSubmit={handleSubmit}>
-  <div>
-    <label>Name:</label>
-    <input 
-      type="text" 
-      value={name} 
-      onChange={(e) => setName(e.target.value)} 
-      required 
-    />
-  </div>
-  <div>
-    <label>Email:</label>
-    <input 
-      type="email" 
-      value={email} 
-      onChange={(e) => setemail(e.target.value)} 
-      required 
-    />
-  </div>
-  <div>
-    <label>Year:</label>
-    <input 
-      type="Number" 
-      value={year} 
-      onChange={(e) => setYear(e.target.value)} 
-      required 
-    />
-  </div>
-  <div>
-    <label>Branch:</label>
-    <input 
-      type="text" 
-      value={branch} 
-      onChange={(e) => setBranch(e.target.value)} 
-      required 
-    />
-  </div>
-  <div>
-    <label>Image:</label>
-    <input 
-      type="file" 
-     
-      onChange={(e) => setImage(e.target.files[0])} 
-      required 
-    />
-  </div>
-  <button type="submit">Submit</button>
-</form>
-<h2>Set Profile To redirect To DashBoard</h2>
-      </div>)
+    <div className="profile-setup-container">
+      <h2 className="profile-setup-title">Profile Setup</h2>
+      <form onSubmit={handleSubmit} className="profile-setup-form">
+        <div>
+          <label className="profile-setup-label">Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="profile-setup-input"
+          />
 
 
 
 
-      }</h2>
 
 
-      
-     
+
+
+
+          
+        </div>
+        <div>
+          <label className="profile-setup-label">Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="profile-setup-input"
+          />
+        </div>
+        <div>
+          <label className="profile-setup-label">Year:</label>
+          <input
+            type="number"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            required
+            className="profile-setup-input"
+          />
+        </div>
+        <div>
+          <label className="profile-setup-label">Branch:</label>
+          <input
+            type="text"
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
+            required
+            className="profile-setup-input"
+          />
+        </div>
+        <div>
+          <label className="profile-setup-label">Image:</label>
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            required
+            className="profile-setup-input"
+          />
+        </div>
+        <button type="submit" className="profile-setup-button">Submit</button>
+      </form>
+    </div>
     </div>
   );
 };

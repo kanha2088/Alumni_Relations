@@ -1,0 +1,122 @@
+.myprofilecontainer {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+  overflow: hidden; /* Prevent body scroll */
+  color: #000000;
+  position: fixed;
+  background-color: #e4e8ec;
+}
+
+.myprofile-info {
+  padding: 20px;
+  background-color: #e1e6ec;
+  flex: 70%;
+  overflow-y: auto; /* Scrollable */
+  padding-right: 20px; /* Space for scrollbar */
+  
+}
+
+.myprofile-messages {
+  padding: 20px;
+ 
+  flex: 30%;
+  overflow-y: auto; /* Scrollable */
+  padding-left: 20px; /* Space for scrollbar */
+  border-left: 1px solid #6c6a6a;
+}
+
+.myprofile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.myprofile-header img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.myprofile-info h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #000000;
+}
+
+.myprofile-info p {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #676767;
+}
+
+.singlepost{
+  width: 90%;
+  position: relative;
+  left: 5%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid#a8a6a6;
+  margin-bottom: 15px;
+  padding: 5px 2px;
+  
+}
+.myprofile-posts strong{
+  position: relative;
+  left: 5%;
+  font-size: 25px;
+  border-bottom: 1px solid rgb(82, 77, 77);
+}
+.singlepost img
+{
+  width: 50%;
+  height: 100%;
+}
+.singlepost li{
+  list-style-type: none;
+}
+
+
+
+
+
+
+.myprofile-messages strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.myprofile-messages h4 {
+  cursor: pointer;
+  margin: 0;
+  font-size: 1.1em;
+  color: #007bff;
+}
+
+.myprofile-messages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.myprofile-messages li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.myprofile-messages div {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

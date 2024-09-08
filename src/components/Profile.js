@@ -1,104 +1,87 @@
-import React, { useState, useEffect, useContext } from "react";
+// Profile.js
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import Popup from './Messages'; // Import the Popup component
+import "./Profile.css";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const { rollNo } = useParams();
-  const [uploads, setUploads] = useState([]);
+
   const [profiledata, setProfile] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const {rollNo}=useParams();
+
 
 
   useEffect(() => {
     const fetchProfile = async () => {
-      if (rollNo) {
+     
         try {
-          const response = await axios.post(
-            "http://localhost:3600/api/getprofile",
-            { rollNo }
-          );
-          setProfile(response.data[0]);
-
-          console.log(response.data[0]);
+          const response = await axios.post("http://localhost:3600/api/getotherprofile", { rollNo });
+          setProfile(response.data);
         } catch (error) {
           console.error("Error fetching profile data:", error);
         }
-      }
-    };
-    const fetchUploads = async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:3600/api/myuploads",
-          { rollNo }
-        );
-        const sortedUploads = response.data;
-        console.log(sortedUploads);
-        setUploads(sortedUploads);
-      } catch (error) {
-        console.error("Error fetching uploads:", error);
-      }
+      
     };
 
     fetchProfile();
-    fetchUploads();
   }, []);
 
-  return (
-    <div>
-      <div className="socio-profile-info">{/*  */}</div>
-      <h1>My Uploads</h1>
-      <p>
-        {profiledata ? (
-          <div>
-            <p>
-              <strong>Name:</strong> {profiledata._id}
-            </p>
-            <p>
-              <strong>Name:</strong> {profiledata.name}
-            </p>
-            <p>
-              <strong>Branch:</strong> {profiledata.branch}
-            </p>
-            <p>
-              <strong>Year:</strong> {profiledata.year}
-            </p>
-            <p>
-              <strong>Year:</strong> {profiledata.email}
-            </p>
-            {profiledata.image && (
-              <img
-                src={`http://localhost:3600/uploads/${profiledata.image}`}
-                alt={profiledata.description || "Image"}
-                width="200"
-              />
-            )}{" "}
-          </div>
-        ) : (
-          ""
-        )}
-      </p>
-      {uploads.length === 0 ? (
-        <p>No uploads found</p>
-      ) : (
-        <ul>
-          {uploads.map((upload) => (
-            <li key={upload._id}>
-              {upload._id}
-              <p>{upload.description}</p>
-              <p>{upload.createdAt}</p>
-              <Link to="/profile">
-                <p>{upload.rollNo}</p>
-              </Link>
-              <img
-                src={`http://localhost:3600/uploads/${upload.image}`}
-                alt={upload.description}
-                width="200"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+  const handleOpenPopup = () => {
+    setPopupOpen(true);
+  };
 
-     
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+
+  if (!profiledata) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="profile-container">
+      <div className="profile-header">
+        {profiledata.uploads.image && (
+          <img
+            src={`http://localhost:3600/uploads/${profiledata.uploads.image}`}
+            alt={profiledata.uploads.name || "Profile Image"}
+            width="100"
+          />
+        )}
+        <div className="profile-details">
+          <h1>{profiledata.uploads.name}</h1>
+          <p><strong>Branch:</strong> {profiledata.uploads.branch}</p>
+          <p><strong>Year:</strong> {profiledata.uploads.year}</p>
+          <p><strong>Email:</strong> {profiledata.uploads.email}</p>
+        </div>
+        <button className="msgbtn" onClick={handleOpenPopup}>Message Him</button>
+      </div>
+      
+      <div className="uploads-section">
+        <h2>Uploads</h2>
+        {profiledata.uploads.posts.length === 0 ? (
+          <p className="no-uploads">No uploads found</p>
+        ) : (
+          <ul>
+            {profiledata.uploads.posts.map((upload) => (
+              <li key={upload._id}>
+                <p><strong>Description:</strong> {upload.description}</p>
+                {upload.image && (
+                  <img
+                    src={`http://localhost:3600/uploads/${upload.image}`}
+                    alt={upload.description}
+                    width="200"
+                  />
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <Popup isOpen={isPopupOpen} onClose={handleClosePopup} />
     </div>
   );
 };

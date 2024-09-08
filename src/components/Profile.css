@@ -1,0 +1,135 @@
+/* Main container for the profile */
+.profile-container {
+    max-width: 70vw;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5; /* Light background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile header styling */
+.profile-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-header img {
+   
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    border: 4px solid #ddd; /* Border around the image */
+}
+.msgbtn{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    padding: 10px;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(78, 115, 217);
+}
+.msgbtn:hover{
+    background-color: rgb(18, 68, 207);
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333; /* Darker text color for contrast */
+}
+
+/* Profile details styling */
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-details p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #555; /* Slightly lighter text color */
+}
+
+/* Uploads section styling */
+.uploads-section {
+    background-color: #fff; /* White background for uploads */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.uploads-section h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.uploads-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.uploads-section li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.uploads-section li:last-child {
+    border-bottom: none;
+}
+
+.uploads-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* No uploads message styling */
+.no-uploads {
+    text-align: center;
+    color: #888;
+    font-size: 1.2em;
+}
+
+.msgbtn {
+    background-color: #007bff; /* Blue background */
+    color: white;              /* White text */
+    border: none;              /* Remove default border */
+    padding: 10px 20px;        /* Add padding */
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    font-size: 16px;           /* Font size */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  .msgbtn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  .msgbtn {
+    background-color: #007bff; /* Blue background */
+    color: white;              /* White text */
+    border: none;              /* Remove default border */
+    padding: 10px 20px;        /* Add padding */
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    font-size: 16px;           /* Font size */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  .msgbtn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  
+  

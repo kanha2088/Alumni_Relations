@@ -1,58 +1,91 @@
-/* UploadForm.css */
 .socio-upload-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  .socio-upload-container h2 {
-    text-align: center;
-    color: #0073b1;
-  }
-  
-  .socio-upload-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .socio-upload-form div {
-    margin-bottom: 15px;
-  }
-  
-  .socio-upload-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .socio-upload-form textarea,
-  .socio-upload-form input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .socio-upload-form textarea {
-    height: 100px;
-    resize: none;
-  }
-  
-  .socio-upload-form button {
-    background-color: #0073b1;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .socio-upload-form button:hover {
-    background-color: #005f8c;
-  }
-  
+  background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+  color: #f5f5f5;
+  border-radius: 10px;
+  padding: 30px;
+ height: 100vh;
+  margin: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid #333;
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+}
+
+.socioform {
+  background: rgba(255, 255, 255, 0.1); 
+  width: 50%;
+  height: 60%;/* Semi-transparent white background */
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for depth */
+}
+
+.socioform h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+}
+
+.socio-upload-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.socio-upload-form div {
+  margin-bottom: 20px;
+}
+
+.socio-upload-form label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.socio-upload-form textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  resize: vertical;
+  font-size: 1em;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.socio-upload-form input[type="file"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 1em;
+}
+
+.socio-upload-form button {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.socio-upload-form button:hover {
+  background: linear-gradient(90deg, #0056b3, #003d80);
+  transform: scale(1.05);
+}

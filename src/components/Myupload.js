@@ -1,14 +1,27 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { RollNoContext } from './RollNoContext';
-//import './Myupload.css'; // Import the CSS file
 
-const UploadForm = () => {
-    const { rollNo,profileid } = useContext(RollNoContext);
+import './Myupload.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
+
+export const UploadForm = () => {
+
+    const navigate=useNavigate();
+    const[token,settoken]=useState('');     
+     
+     
+    if(token==''){
+        const storedtoken=localStorage.getItem('token');
+        settoken(storedtoken);
+    }
+  const n=localStorage.getItem('Info');
+  
+  const name=JSON.parse(n).name;   
     const [description, setDescription] = useState('');
     const [image, setImage] = useState(null);
+    
     const createdAt = new Date();
-    console.log(profileid)
+   
     const handleDescriptionChange = (e) => {
         setDescription(e.target.value);
     };
@@ -21,11 +34,13 @@ const UploadForm = () => {
         e.preventDefault();
         
         const formData = new FormData();
-        formData.append('rollNo', rollNo); // Append rollNo to formData
+        formData.append('token', token); // Append rollNo to formData
         formData.append('description', description);
         formData.append('image', image);
         formData.append('date', createdAt);
-        formData.append('profileid', profileid);
+        formData.append('name', name);
+
+        
 
         try {
             const response = await axios.post('http://localhost:3600/api/upload', formData, {
@@ -33,8 +48,9 @@ const UploadForm = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log('Upload successful:', response.data);
+           
             alert("Success");
+            navigate(-1);
             // Handle success behavior
         } catch (error) {
             console.error('Error uploading:', error);
@@ -45,6 +61,7 @@ const UploadForm = () => {
 
     return (
         <div className="socio-upload-container">
+            <div className='socioform'>
             <h2>Upload Form</h2>
             <form className="socio-upload-form" onSubmit={handleSubmit}>
                 <div>
@@ -57,9 +74,9 @@ const UploadForm = () => {
                 </div>
                 <button type="submit">Upload</button>
             </form>
-            <div></div>
+            </div>
         </div>
     );
 };
 
-export default UploadForm;
+

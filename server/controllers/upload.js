@@ -1,35 +1,41 @@
 
 const uploadpost = require('../models/upload');
 const Profile = require('../models/Profile');
-const path = require('path');
+const jwt=require('jsonwebtoken')
 
 exports.uploadImage = async (req, res) => {
     try {
         console.log("upload called")
-        const { description,rollNo,profileid } = req.body;
+        const { description,token,name } = req.body;
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const rollNo=decoded.rollNo;
         const image = req.file.filename;
             console.log(description)
             console.log(rollNo)
             console.log(req.file.filename)
-            console.log(profileid)
             
             
+             
 
         const newpost = await uploadpost.create({
             description,
             image,
-            profileid,
+            name,
             rollNo,
             
         });
-        const post = await Profile.findByIdAndUpdate(
-            req.body.profileid,
+        
+        const post = await Profile.findOneAndUpdate(
+            { rollNo },
             { $push: { posts: newpost._id } },
             { new: true }
           ).populate('posts');
-        
-          res.send(post);
-      
+          
+          res.status(200).json({
+           
+            newpost
+          })
+          
        
     } catch (err) {
         console.log(err)
@@ -39,16 +45,16 @@ exports.uploadImage = async (req, res) => {
 exports.getAllUploads=async(req,res) =>{
     try{
                 
-                console.log("all called")
+               
                 
-                const uploads = await uploadpost.find().populate('profileid').sort({ createdAt: -1 });
+                const uploads = await uploadpost.find().sort({ createdAt: -1 });
                       
                 res.status(200).json(uploads);
           
          
     }
     catch{
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: error.message });
     }
 }
 exports.getmyUploads=async(req,res) =>{
@@ -64,6 +70,6 @@ exports.getmyUploads=async(req,res) =>{
         
     }
     catch{
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: error.message });
     } 
 }
